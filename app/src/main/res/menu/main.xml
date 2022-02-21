@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/orders"
+        android:orderInCategory="100"
+        android:title="Orders" />
+
+    <item
+        android:id="@+id/meals"
+        android:orderInCategory="200"
+        android:title="Meals" />
+
+    <item
+        android:id="@+id/employees"
+        android:orderInCategory="300"
+        android:title="Employees" />
+
+    <item
+        android:id="@+id/foodSuppliers"
+        android:orderInCategory="400"
+        android:title="Food Suppliers" />
+
+    <item
+        android:id="@+id/credits"
+        android:orderInCategory="400"
+        android:title="Credits" />
+</menu>
