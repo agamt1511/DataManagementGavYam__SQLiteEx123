@@ -1,5 +1,7 @@
 package com.example.datamanagementgavyam__sqliteex123;
 
+import static com.example.datamanagementgavyam__sqliteex123.Orders.TABLE_ORDERS;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,12 +27,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ArrayList<String> tbl = new ArrayList<>();
     ArrayAdapter adp;
 
-    Intent food;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        food = new Intent(this,FoodSupplierAdd.class);
 
         lvrecords = (ListView) findViewById(R.id.lvrecords);
         lvrecords.setOnItemClickListener(this);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         hlp = new HelperDB(this);
 
-        crsr = db.query(Orders.TABLE_ORDERS, null, null, null, null, null, null);
+        crsr = db.query(TABLE_ORDERS, null, null, null, null, null, null);
         int col1 = crsr.getColumnIndex(Orders.ORDER_MEAL);
         int col2 = crsr.getColumnIndex(Orders.ORDER_EMPLOYEE);
         int col3 = crsr.getColumnIndex(Orders.ORDER_SUPPLIER);
@@ -62,13 +62,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lvrecords.setAdapter(adp);
     }
 
-    public void now(View view) {
-        startActivity(food);
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent si = new Intent(this,FoodSupplierShow.class);
+        startActivity(si);
     }
 
     /**
@@ -109,5 +107,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(si);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void add(View view) {
+        Intent si = new Intent(this,OrdersAdd.class);
+        startActivity(si);
     }
 }

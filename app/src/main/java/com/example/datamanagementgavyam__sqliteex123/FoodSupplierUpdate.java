@@ -1,5 +1,7 @@
 package com.example.datamanagementgavyam__sqliteex123;
 
+import static com.example.datamanagementgavyam__sqliteex123.FoodSupplier.TABLE_SUPPLIER;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
@@ -33,7 +35,7 @@ public class FoodSupplierUpdate extends AppCompatActivity {
 
     public void delete(View view) {
         db = hlp.getWritableDatabase();
-        db.delete(FoodSupplier.TABLE_SUPPLIER, FoodSupplier.KEY_ID+"=?", new String[]{Integer.toString(position + 1)});
+        db.delete(TABLE_SUPPLIER, FoodSupplier.KEY_ID+"=?", new String[]{Integer.toString(position + 1)});
         db.close();
     }
 
@@ -49,7 +51,7 @@ public class FoodSupplierUpdate extends AppCompatActivity {
             cv.put(FoodSupplier.SUPPLIER_ACTIVE,1);
 
             db = hlp.getWritableDatabase();
-            db.insert(FoodSupplier.TABLE_SUPPLIER, null, cv);
+            db.insert(TABLE_SUPPLIER, null, cv);
             db.close();
 
             Toast.makeText(this, "The data was updated successfully", Toast.LENGTH_LONG).show();

@@ -1,5 +1,7 @@
 package com.example.datamanagementgavyam__sqliteex123;
 
+import static com.example.datamanagementgavyam__sqliteex123.Meals.TABLE_MEALS;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,7 +38,7 @@ public class MealsShow extends AppCompatActivity implements AdapterView.OnItemCl
 
         hlp = new HelperDB(this);
 
-        crsr = db.query(Meals.TABLE_MEALS, null, null, null, null, null, null);
+        crsr = db.query(TABLE_MEALS, null, null, null, null, null, null);
         int col1 = crsr.getColumnIndex(Meals.APPETIZER);
         int col2 = crsr.getColumnIndex(Meals.MAIN_COURSE);
         int col3 = crsr.getColumnIndex(Meals.EXTRA);
@@ -62,7 +64,6 @@ public class MealsShow extends AppCompatActivity implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
     /**
@@ -103,5 +104,10 @@ public class MealsShow extends AppCompatActivity implements AdapterView.OnItemCl
             startActivity(si);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void add(View view) {
+        Intent si = new Intent(this,MealsAdd.class);
+        startActivity(si);
     }
 }

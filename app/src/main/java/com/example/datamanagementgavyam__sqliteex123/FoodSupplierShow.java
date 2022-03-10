@@ -1,5 +1,7 @@
 package com.example.datamanagementgavyam__sqliteex123;
 
+import static com.example.datamanagementgavyam__sqliteex123.FoodSupplier.TABLE_SUPPLIER;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,7 +40,7 @@ public class FoodSupplierShow extends AppCompatActivity implements AdapterView.O
 
         hlp = new HelperDB(this);
 
-        crsr = db.query(FoodSupplier.TABLE_SUPPLIER, null, null, null, null, null, null);
+        crsr = db.query(TABLE_SUPPLIER, null, null, null, null, null, null);
 
         int col1 = crsr.getColumnIndex(FoodSupplier.SUPPLIER_NAME);
         int col2 = crsr.getColumnIndex(FoodSupplier.PRIMARY_PHONE);
@@ -63,7 +65,8 @@ public class FoodSupplierShow extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this, "The data was added successfully", Toast.LENGTH_LONG).show();
+        Intent si = new Intent(this,FoodSupplierUpdate.class);
+        startActivity(si);
     }
 
     /**
@@ -104,5 +107,10 @@ public class FoodSupplierShow extends AppCompatActivity implements AdapterView.O
             startActivity(si);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void add(View view) {
+        Intent si = new Intent(this,FoodSupplierAdd.class);
+        startActivity(si);
     }
 }

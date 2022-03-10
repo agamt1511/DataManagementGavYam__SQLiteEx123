@@ -1,5 +1,7 @@
 package com.example.datamanagementgavyam__sqliteex123;
 
+import static com.example.datamanagementgavyam__sqliteex123.Employees.TABLE_EMPLOYEES;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,7 +38,7 @@ public class EmployeesShow extends AppCompatActivity implements AdapterView.OnIt
 
         hlp = new HelperDB(this);
 
-        crsr = db.query(Employees.TABLE_EMPLOYEES, null, null, null, null, null, null);
+        crsr = db.query(TABLE_EMPLOYEES, null, null, null, null, null, null);
         int col1 = crsr.getColumnIndex(Employees.EMPLOYEE_FIRSTNAME);
         int col2 = crsr.getColumnIndex(Employees.EMPLOYEE_LASTNAME);
         int col3 = crsr.getColumnIndex(Employees.EMPLOYEE_ID);
@@ -64,6 +66,8 @@ public class EmployeesShow extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent si = new Intent(this,EmployeesUpdate.class);
+        startActivity(si);
     }
 
     /**
@@ -104,5 +108,10 @@ public class EmployeesShow extends AppCompatActivity implements AdapterView.OnIt
             startActivity(si);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void add(View view) {
+        Intent si = new Intent(this,EmployeesAdd.class);
+        startActivity(si);
     }
 }

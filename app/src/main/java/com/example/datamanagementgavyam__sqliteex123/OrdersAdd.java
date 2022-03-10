@@ -1,5 +1,7 @@
 package com.example.datamanagementgavyam__sqliteex123;
 
+import static com.example.datamanagementgavyam__sqliteex123.FoodSupplier.TABLE_SUPPLIER;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -42,7 +44,7 @@ public class OrdersAdd extends AppCompatActivity implements AdapterView.OnItemCl
 
         hlp = new HelperDB(this);
 
-        crsr = db.query(FoodSupplier.TABLE_SUPPLIER, null, null, null, null, null, null);
+        crsr = db.query(TABLE_SUPPLIER, null, null, null, null, null, null);
 
         int col1 = crsr.getColumnIndex(Employees.EMPLOYEE_ID);
         int col2 = crsr.getColumnIndex(FoodSupplier.SUPPLIER_NAME);
@@ -91,7 +93,7 @@ public class OrdersAdd extends AppCompatActivity implements AdapterView.OnItemCl
     }
 
     public void add(View view) {
-        Intent si = new Intent(this,MainActivity.class);
+        Intent si = new Intent(this,MealsAdd.class);
         startActivity(si);
     }
 }
